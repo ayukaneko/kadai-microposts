@@ -28,6 +28,7 @@
                  <li>{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
                 {{-- ログインページへのリンク --}}
                 <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+                @endif
             </ul>
         </div>
     </nav>
