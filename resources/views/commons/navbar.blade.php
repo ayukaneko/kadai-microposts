@@ -19,6 +19,9 @@
                             {{-- ユーザ詳細ページへのリンク --}}
                               <li class="dropdown-item">{!! link_to_route('users.show', 'My profile', ['user' => Auth::id()]) !!}</li>
                                 <li class="dropdown-divider"></li>
+                            {{-- favorites詳細ページへのリンク --}}
+                              <li class="dropdown-item">{!! link_to_route('users.favorites', 'My Favorite', [$id = auth()->id()]) !!}</li>
+                                <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
                         </ul>
@@ -27,7 +30,7 @@
                 {{-- ユーザ登録ページへのリンク --}}
                  <li>{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
                 {{-- ログインページへのリンク --}}
-                <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+                <li>{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
                 @endif
             </ul>
         </div>

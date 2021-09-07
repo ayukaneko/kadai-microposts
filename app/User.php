@@ -55,7 +55,7 @@ class User extends Authenticatable
     
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'user_favorites', 'user_id', 'favorites_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_favorites', 'user_id', 'micropost_id')->withTimestamps();
     }
 
     /**
@@ -150,24 +150,7 @@ class User extends Authenticatable
             return false;
         }
     }
-
-    /**
-     * 指定された $userIdのユーザをこのユーザがフォロー中であるか調べる。フォロー中ならtrueを返す。
-     *
-     * @param  int  $userId
-     * @return bool
-     */
-    public function is_following($userId)
-    {
-        // フォロー中ユーザの中に $userIdのものが存在するか
-        return $this->followings()->where('follow_id', $userId)->exists();
-    }
-    
-    
-   /**
-     * このユーザとフォロー中ユーザの投稿に絞り込む。
-     */
-    public function feed_microposts()
+      public function feed_microposts()
     {
         // このユーザがフォロー中のユーザのidを取得して配列にする
         $userIds = $this->followings()->pluck('users.id')->toArray();
@@ -176,5 +159,15 @@ class User extends Authenticatable
         // それらのユーザが所有する投稿に絞り込む
         return Micropost::whereIn('user_id', $userIds);
     }
-    
+     public function is_following($userId)
+    {
+        // フォロー中ユーザの中に $userIdのものが存在するか
+        return $this->followings()->where('follow_id', $userId)->exists();
+    }
+     public function is_favorite($userId)
+    {
+        // フォロー中ユーザの中に $userIdのものが存在するか
+        return $this->favorites()->where('micropost_id', $userId)->exists();
+    }
 }
+    /**
