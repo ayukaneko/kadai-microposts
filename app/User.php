@@ -159,15 +159,18 @@ class User extends Authenticatable
         // それらのユーザが所有する投稿に絞り込む
         return Micropost::whereIn('user_id', $userIds);
     }
+    
+    
      public function is_following($userId)
     {
         // フォロー中ユーザの中に $userIdのものが存在するか
         return $this->followings()->where('follow_id', $userId)->exists();
     }
+    
+    
      public function is_favorite($userId)
     {
-        // フォロー中ユーザの中に $userIdのものが存在するか
+       
         return $this->favorites()->where('micropost_id', $userId)->exists();
     }
 }
-    /**
