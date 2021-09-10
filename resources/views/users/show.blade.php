@@ -14,8 +14,7 @@
                 </div>
                  {{-- フォロー／アンフォローボタン --}}
             @include('user_follow.follow_button')
-                 {{-- favorites／アンfavoritesボタン --}}
-            @include('user_favorite.favorite_button')
+                
             </div>
               
         </aside>

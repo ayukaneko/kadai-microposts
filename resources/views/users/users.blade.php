@@ -13,12 +13,14 @@
                      
                         
                     </div>
+                    
                 </div>
-            
+           
             </li>
                
         @endforeach
           </ul>
+          
     {{-- ページネーションのリンク --}}
     {{ $users->links() }}
     

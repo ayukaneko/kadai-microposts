@@ -17,6 +17,8 @@ class UsersController extends Controller
         return view('users.index', [
             'users' => $users,
         ]);
+        
+        
     }
     
     
@@ -98,13 +100,15 @@ class UsersController extends Controller
         $user->loadRelationshipCounts();
 
         // ユーザのfavoritesー一覧を取得
-        $favorites = $user->favorites()->paginate(10);
+        $favorites = $user->favorites_microposts()->paginate(10);
 
         // favorites一覧ビューでそれらを表示
         return view('users.favorites', [
             'user' => $user,
-            'users' => $favorites,
+            'microposts' => $favorites,
         ]);
     }
+    
+   
     
 }

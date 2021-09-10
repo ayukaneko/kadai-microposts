@@ -19,6 +19,7 @@
             Followers
             <span class="badge badge-secondary">{{ $user->followers_count }}</span>
         </a>
+        
     </li>
     {{-- favorites一覧タブ --}}
     <li class="nav-item">
