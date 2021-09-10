@@ -156,6 +156,7 @@ class User extends Authenticatable
         $micropostIds = $this->favorites()->pluck('user_favorites.micropost_id')->toArray();
         // それらのidが投稿に絞り込む
         return Micropost::whereIn('id', $micropostIds);
+       
     }
     
     public function feed_microposts()
