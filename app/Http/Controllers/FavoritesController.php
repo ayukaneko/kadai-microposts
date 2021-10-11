@@ -14,6 +14,7 @@ class FavoritesController extends Controller
      */
     public function store($id)
     {
+        // dd($id);
         // 認証済みユーザ（閲覧者）が、 idのユーザをfavoriteする
         \Auth::user()->favorite($id);
         // 前のURLへリダイレクトさせる

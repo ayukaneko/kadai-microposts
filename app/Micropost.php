@@ -17,13 +17,14 @@ class Micropost extends Model
     }
     
     
-    public function favorites_users()
+    public function followings()
     {
+    
         return $this->belongsTo(User::class,'user_follow', 'user_id', 'follow_id')->withTimestamps();
     }
 
-  public function followings()
+  public function favorites_users()
     {
-        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'favorites_id')->withTimestamps();
+        return $this->belongsToMany(Micropost::class, 'favorites', 'user_id', 'favorites_id')->withTimestamps();
     }
 }

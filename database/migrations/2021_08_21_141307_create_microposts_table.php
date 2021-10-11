@@ -20,7 +20,7 @@ class CreateMicropostsTable extends Migration
             $table->timestamps();
             
               // 外部キー制約
-            $table->foreign('user_id')->references('id')->on('microposts');
+            $table->foreign('user_id')->references('id')->on('users');
            
         });
     }
